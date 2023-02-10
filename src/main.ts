@@ -4,7 +4,9 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import './assets/main.css'
+//element dark mode https://element-plus.org/en-US/guide/dark-mode.html#dark-mode
+import 'element-plus/theme-chalk/dark/css-vars.css'
+import './assets/tailwind.css'
 
 const app = createApp(App)
 
