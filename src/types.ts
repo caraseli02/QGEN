@@ -1,4 +1,4 @@
-export interface IDogsList {
+export interface IDog {
   url: string;
   width: string;
   height: string;
