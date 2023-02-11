@@ -6,7 +6,8 @@ module.exports = {
   'extends': [
     'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/eslint-config-typescript'
+    '@vue/eslint-config-typescript',
+    './.eslintrc-auto-import.json',
   ],
   overrides: [
     {
@@ -20,5 +21,5 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  }
+  },
 }
