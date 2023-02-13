@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { IDogsList } from '@/types';
+import type { IDog } from '@/types';
 
-const props = defineProps<{
-  dogData: IDogsList
+defineProps<{
+  dogData: IDog
 }>()
 </script>
 

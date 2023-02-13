@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import type { IDog } from '@/types';
-import type { TableColumnCtx } from 'element-plus'
-import { ElTable } from 'element-plus'
 
 const props = defineProps<{
   DogsList: IDog[]
@@ -19,9 +17,7 @@ const filtersList = computed(() => {
 const filterHandler = (
   value: string,
   row: IDog,
-  column: TableColumnCtx<IDog>
 ) => {
-  const property = column['property']
   return row.breeds[0].name === value
 }
 </script>
