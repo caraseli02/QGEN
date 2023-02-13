@@ -21,7 +21,7 @@ const emit = defineEmits<{
     (e: 'update:modelValue', value: IDog[]): void
 }>()
 
-const currentPage = ref(4)
+const currentPage = ref(1)
 const pageSize = ref(10)
 
 const handleChange = () => {
@@ -29,6 +29,7 @@ const handleChange = () => {
     const end = start + pageSize.value;
     return emit('update:modelValue', JSON.parse(data.value as string).slice(start, end));
 }
+handleChange()
 </script>
 
 <style scoped>

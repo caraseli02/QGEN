@@ -5,13 +5,27 @@ const props = defineProps<{
   DogsList: IDog[]
 }>()
 
-const filtersList = computed(() => {
+const filtersListArr = computed(() => {
   return props.DogsList.map((item: IDog) => {
     return {
       value: item.breeds[0].name,
       text: item.breeds[0].name
     }
   })
+})
+
+const filterListSet = computed(() => {
+  let values = new Set();
+  let outputArray = [];
+
+  for (let i = 0; i < filtersListArr.value.length; i++) {
+    if (!values.has(filtersListArr.value[i].value)) {
+      values.add(filtersListArr.value[i].value);
+      outputArray.push(filtersListArr.value[i]);
+    }
+  }
+
+  return outputArray;
 })
 
 const filterHandler = (
@@ -25,18 +39,18 @@ const filterHandler = (
 <template>
   <section class="example-showcase">
     <el-table :data="DogsList" style="width: 100%">
-      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Breed Name" width="180" :filters="filtersList"
-        :filter-method="filterHandler">
+      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Breed Name" width="180"
+        :filters="filterListSet" :filter-method="filterHandler">
         <template #default="props">
           {{ props.row.breeds[0].name }}
         </template>
       </el-table-column>
-      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Bred For">
+      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Bred For" width="180">
         <template #default="props">
           {{ props.row.breeds[0].bred_for }}
         </template>
       </el-table-column>
-      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Temperament">
+      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Temperament" width="180">
         <template #default="props">
           {{ props.row.breeds[0].temperament }}
         </template>

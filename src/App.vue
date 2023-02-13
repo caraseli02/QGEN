@@ -12,7 +12,7 @@ useDark()
       <Transition mode="out-in">
         <Suspense>
           <!-- main content -->
-          <component class="mx-24 mt-24" :is="Component"></component>
+          <component class="mx-2 mt-2 " :is="Component"></component>
 
           <!-- loading state -->
           <template #fallback>
