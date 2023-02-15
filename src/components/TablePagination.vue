@@ -9,7 +9,7 @@ import { ref } from 'vue'
 
 import { useFetch } from '@vueuse/core'
 
-const url = 'https://api.thedogapi.com/v1/images/search?limit=50&has_breeds=1&api_key=live_M7F5gZDNmkcVJs91ZMc1XPOF00M9GbkCtY0c0wgpN9iKNJ4L8me1xnS2mzHkNK2D'
+const url = `https://api.thedogapi.com/v1/images/search?limit=50&has_breeds=1&api_key=${import.meta.env.VITE_API_URL}`
 
 const { isFetching, error, data } = await useFetch(url)
 

@@ -7,6 +7,5 @@ export interface IDog {
     name: string;
     temperament: string;
     bred_for: string
-    url?: string;
   }[]
 }
