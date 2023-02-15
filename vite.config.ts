@@ -29,5 +29,13 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  test: {
+    global: true,
+    environment: 'jsdom',
+    exclude: ['node_modules', 'dist', 'src/**/*.stories.spec.ts'],
+    deps: {
+      inline: ['element-plus'],
+    },
+  },
 })
