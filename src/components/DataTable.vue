@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import type { IDog } from '@/types';
+import { useAuthStore } from '@/stores/auth';
+import { storeToRefs } from 'pinia';
+
+const authStore = useAuthStore();
+const { user } = storeToRefs(authStore)
 
 const props = defineProps<{
   DogsList: IDog[]
@@ -34,13 +39,15 @@ const filterHandler = (
 ) => {
   return row.breeds[0].name === value
 }
+
+const isAdmin = computed(() => user.value?.username === 'admin')
 </script>
 
 <template>
   <section class="example-showcase">
     <el-table :data="DogsList" style="width: 100%">
-      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Breed Name" width="180"
-        :filters="filterListSet" :filter-method="filterHandler">
+      <el-table-column show-overflow-tooltip tooltip-effect="dark" label="Breed Name" width="180" :filters="filterListSet"
+        :filter-method="filterHandler">
         <template #default="props">
           {{ props.row.breeds[0].name }}
         </template>
@@ -70,7 +77,7 @@ const filterHandler = (
           </DialogContainer>
         </template>
       </el-table-column>
-      <el-table-column label="Time Line" width="100">
+      <el-table-column v-if="isAdmin" label="Time Line" width="100">
         <DialogContainer>
           <template #trigger>
             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
@@ -84,7 +91,7 @@ const filterHandler = (
         </DialogContainer>
       </el-table-column>
     </el-table>
-  </section>
+</section>
 </template>
 
 <style scoped>

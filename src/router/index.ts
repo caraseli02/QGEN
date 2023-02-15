@@ -29,6 +29,8 @@ router.beforeEach(async (to) => {
   const authStore = useAuthStore();
 
   if (authRequired && !authStore.user) {
+    console.log(authRequired ,!authStore.user);
+    
     return '/login';
   }
 });

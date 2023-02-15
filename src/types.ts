@@ -10,4 +10,4 @@ export interface IDog {
   }[]
 }
 
-export interface IValues { username: string, password: string }
+export interface IUser { username: string, password: string }

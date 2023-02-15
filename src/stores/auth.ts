@@ -1,19 +1,23 @@
 import { defineStore } from 'pinia';
-import { useStorage } from '@vueuse/core'
 import { router } from '@/router';
+import type { IUser } from '@/types';
 
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
         // initialize state from local storage to enable user to stay logged in
-        user: useStorage('user', {}),
+        user: {
+            username: 'test',
+            password: 'test'
+        } as IUser | null,
     }),
     actions: {
         async login(username: string, password: string) {
-            localStorage.setItem('user', JSON.stringify({ username, password }));
+            this.user = { username, password }
+            await router.push('/');
         },
         logout() {
-            this.user = {};
+            this.user = null;
             router.push('/login');
         }
     }
