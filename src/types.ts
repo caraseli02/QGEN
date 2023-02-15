@@ -9,3 +9,5 @@ export interface IDog {
     bred_for: string
   }[]
 }
+
+export interface IValues { username: string, password: string }
